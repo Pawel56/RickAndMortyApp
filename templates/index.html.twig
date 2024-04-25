@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table>
+        <tr>
+            <td><h1>id</h1></td>
+            <td><h1>name</h1></td>
+            <td><h1>image</h1></td>
+            <td><h1>episodes they are in</h1></td>        
+        </tr>
+    {% for character in characters %}
+        <tr>
+            <td><h2>{{character.id}}</h2></td>
+            <td><h2>{{character.name}}</h2></td>
+            <td><img src="{{character.image}}" alt="test"></td>
+                <td>{% for episode in character.episode %}
+                    {{ episode|replace({'https://rickandmortyapi.com/api/episode/': ''}) }}
+                {% endfor %}</td>
+            </tr>
+        
+    {% endfor %}
+    </table>
+{% endblock %}
